@@ -1,0 +1,5 @@
+<%= form_for @template, url: template_path(@template) do |f| %>
+  <% unless @template.errors.any? %>
+    <%= render 'fields', f: f, template: @template, fields_disabled: false, type_hidden: "" %>
+  <% end %>
+<% end %>

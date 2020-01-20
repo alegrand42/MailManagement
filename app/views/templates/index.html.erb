@@ -1,0 +1,38 @@
+<h1>Templates</h1>
+
+<%= flash[:notice] %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Show</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @templates.order("code desc").each do |template| %>
+      <tr>
+        <td><%= template.code %></td>
+        <td><h4><%= link_to "/templates/#{template.id}",
+          :method=> :get, class: "inbox-sf-add-btn tip" do %>
+          <i class="glyphicon glyphicon-folder-open"></i> Show<% end %></h4>
+      </td>
+      <td>
+        <h4><%= link_to "/templates/#{template.id}",
+          :method=> :delete, class: "inbox-sf-add-btn tip", data: { confirm: "Are you sure you want to delete this contact?"} do %>
+          <i class="glyphicon glyphicon-trash"></i> Destroy<% end %></h4>
+    </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+  <h4> Template Mail </h4>
+  <%= form_tag generate_templates_path do %>
+    <div>Code: <%= text_field_tag :code %></div>
+    <div>Mail: <%= text_area_tag :mail %></div>
+    <%= submit_tag "Save"%>
+  <% end %>
+</div>
