@@ -77,7 +77,7 @@ class Mails
 
   def self.all_replace(variables)
     [
-      ['<court_date>', variables[:court_date]],
+      ['<court_date>', variables[:court_date].to_s],
       ['<civility>', variables[:civility]],
       ['<denomination>', variables[:denomination]]
     ]
