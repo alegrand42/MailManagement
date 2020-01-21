@@ -7,6 +7,7 @@
     <tr>
       <th>Code</th>
       <th>Show</th>
+      <th>Update</th>
       <th>Destroy</th>
     </tr>
   </thead>
@@ -17,6 +18,10 @@
         <td><h4><%= link_to "/templates/#{template.id}",
           :method=> :get, class: "inbox-sf-add-btn tip" do %>
           <i class="glyphicon glyphicon-folder-open"></i> Show<% end %></h4>
+      </td>
+        <td><h4><%= link_to "/templates/#{template.id}/edit",
+          :method=> :get, class: "inbox-sf-add-btn tip" do %>
+          <i class="glyphicon glyphicon-folder-open"></i> Update<% end %></h4>
       </td>
       <td>
         <h4><%= link_to "/templates/#{template.id}",
