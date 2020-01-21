@@ -6,7 +6,6 @@ class Mails
     mail = Mail.find_or_create_by(fetch_attributes(params))
     return unless mail
     Variable.find_or_create_by(fetch_variables(params, mail.id))
-    # send mail and update deliver_at
     mail.id
   end
 
@@ -15,7 +14,9 @@ class Mails
   end
 
   def self.gather_all
-    Mail.includes(:variable).to_a
+    Mail.all.map do |mail|
+      display_single(mail.id)
+    end
   end
 
   private
@@ -64,7 +65,6 @@ class Mails
   end
 
   def self.gather_variables(mail_id)
-    #model
     variables = Variable.find_by(mail_id: mail_id)
     return unless variables
 

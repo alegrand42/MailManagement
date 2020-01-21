@@ -15,7 +15,11 @@ class Api::V1::MailsController < Api::V1::ApiController
   end
 
   def status
-    #render json: "OK" "SENDING" "FAIL"
+    render json: Mail.find_by(id: params[:id]).delivered_at.nil? ? "NOT YET" : "OK"
+  end
+
+  def delete
+    Mail.find_by(id: params[:id]).destroy
   end
 
   private
