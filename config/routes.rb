@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-        namespace :v1 do
-            resources :mails do
-              collection { get :status}
-            end
-        end
+    namespace :v1 do
+      resources :mails, only: [:index, :create, :destroy, :show]
     end
+  end
+
+  get "api/v1/mails/:id/send_msg" => "api/v1/mails#send_msg"
 end
