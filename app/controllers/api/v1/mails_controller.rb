@@ -14,8 +14,8 @@ class Api::V1::MailsController < Api::V1::ApiController
     render json: Mails.fetch_show(params).to_json
   end
 
-  def status
-    render json: Mail.find_by(id: params[:id]).delivered_at.nil? ? "NOT YET" : "OK"
+  def send_msg
+    render json: Mailguns.send_message(params)
   end
 
   def delete
